@@ -24,13 +24,13 @@ public class Utilis {
             return false;
         }
     }
-    public static void swipeAbajo(){
-        int ancho = (int) (DriverContext.getdriver().manage().window().getSize().width *0.08D);
-        int startPoint = (int) (DriverContext.getdriver().manage().window().getSize().height *0.9D);
-        int endPoint = (int) (DriverContext.getdriver().manage().window().getSize().height *0.65D);
+    public static void swipeAbajo() {
+        int ancho = (int) (DriverContext.getdriver().manage().window().getSize().width * 0.08D);
+        int startPoint = (int) (DriverContext.getdriver().manage().window().getSize().height * 0.9D);
+        int endPoint = (int) (DriverContext.getdriver().manage().window().getSize().height * 0.65D);
 
-        TouchAction touchAction =new TouchAction(DriverContext.getdriver());
-        touchAction.press(PointOption.point(ancho,startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(500L))).moveTo(PointOption.point(ancho,endPoint)).release().perform();
-        System.out.println("[Utilis] Swipe hacia Abajo");
+        TouchAction touchAction = new TouchAction(DriverContext.getdriver());
+        touchAction.press(PointOption.point(ancho,startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(500L))).moveTo(PointOption.point(ancho, endPoint)).release().perform();
+        System.out.println("[Utils] Swipe hacia Abajo");
     }
 }

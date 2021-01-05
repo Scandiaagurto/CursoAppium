@@ -13,8 +13,8 @@ public class AgregarProductoCase {
      * Datos para Crear Productos
      */
 
-    String Producto= "jugo";
-    String PrecioList="730.00";
+    String Producto= "palta";
+    String PrecioList="4530.00";
 
     public void flujo(){
         carruselPage.ValidarVistaDesplegada();

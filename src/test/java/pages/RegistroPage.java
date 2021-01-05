@@ -39,6 +39,9 @@ public class RegistroPage {
     @AndroidFindBy(xpath = "//*[@resource-id='com.rodrigo.registro:id/precio_producto']")
     private List<MobileElement> listPrecioProductos;
 
+    @AndroidFindBy(id = "com.rodrigo.registro:id/nombre_cliente")
+    private List<MobileElement> labelCliente;
+
     public void validarVistaDesplegada(){
 
         if (esperarObjeto(tituloVistaRegistro,2)){
@@ -92,20 +95,62 @@ public class RegistroPage {
       }
     }
     public void validarPrecio(String PrecioList){
-        System.out.println("[RegistroPrecio] Validar precio");
-        Boolean precioEncontrado = false;
+        System.out.println("[RegistroPrecios] Validar precios");
+        Boolean preciosEncontrados = false;
         for (int i=0;i<=listPrecioProductos.size();i++){
             String namePrecioActual =   listPrecioProductos.get(i).getText();
             if (namePrecioActual.equals(PrecioList)){
-                precioEncontrado =true;
+                preciosEncontrados =true;
                 break;
             }
         }
-        if (precioEncontrado){
+        if (preciosEncontrados){
             addStep("Precio: "+PrecioList+" encontrado", true, Status.PASSED,false);
         }
         else {
             addStep("Precio: "+PrecioList+" NO encontrado", true, Status.PASSED,true);
         }
+    }
+    public void tapClientes(String Cliente){
+        System.out.println("[Registro Page] Validar Cliente");
+        boolean clienteEncontrado = false;
+
+
+        for (int i =0;i<=labelCliente.size();i++){
+            String nombreClienteActual = labelCliente.get(i).getText();
+            if (nombreClienteActual.equals(Cliente)){
+                labelCliente.get(i).click();
+                clienteEncontrado = true;
+                break;
+            }
+        }
+
+        if (clienteEncontrado){
+            addStep("Cliente: "+Cliente+" se encuentra", true, Status.PASSED, false);
+        }
+        else {
+            addStep("Cliente: "+Cliente+" no se encuentra ", true, Status.FAILED, true);
+        }
+    }
+    public void validacionClientesEliminados(String Cliente){
+        System.out.println("[Registro Page] Validar Cliente Eliminado");
+        boolean clienteEncontrado = false;
+
+
+        for (int i =0;i<=labelCliente.size();i++){
+            String nombreClienteActual = labelCliente.get(i).getText();
+            if (!nombreClienteActual.equals(Cliente)){
+                clienteEncontrado = true;
+                break;
+            }
+        }
+
+        if (clienteEncontrado){
+            addStep("Cliente: "+Cliente+" eliminado", true, Status.PASSED, false);
+        }
+        else {
+            addStep("Cliente: "+Cliente+" no se eliminó", true, Status.FAILED, true);
+        }
+
     }
 }
