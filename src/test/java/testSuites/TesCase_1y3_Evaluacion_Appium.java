@@ -26,7 +26,7 @@ public class TesCase_1y3_Evaluacion_Appium {
         test.flujo();
     }
 
-    @Test(description = "Test para Eliminar un Cliente")
+    @Test(description = "Test para Eliminar un Cliente y se valida que se elimine")
     public void eliminarCliente(){
         EliminarClienteCase test  =new EliminarClienteCase();
         test.flujo2();
